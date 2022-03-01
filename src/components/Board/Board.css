@@ -1,8 +1,8 @@
-.wordbox {
+.board {
     background: gray;
     border-radius: 1rem;
     border: 2px black solid;
     
-    height: 10rem;
-    width: 4rem;
+    height: 20rem;
+    width: 15rem;
 }
