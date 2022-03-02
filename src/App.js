@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useGuess from "./hooks/useGuess";
 import Board from "./components/Board/Board";
 import "./App.css";
 
@@ -7,11 +8,14 @@ import "./App.css";
     - words         int | number of wordboxes on screen
 */
 export default function App() {
-    const [words, setWords] = useState(["tests", "happy", "twist"]);
+    const [words, setWords] = useState(["VALUED", "MONKEY", "RIPPER"]); // built, happy, twist
     const [wordLength, setWordLength] = useState(words[0].length);
+
+    const [boards, setBoards] = useState(Array(words.length).fill(false));
+    const [gameOver, setGameOver] = useState(false);
+
     const [numGuesses, setNumGuesses] = useState(words.length + 5);
-    const [guess, setGuess] = useState("")
-    const [guesses, setGuesses] = useState([]); // update on guess submission
+    const [guess, guesses] = useGuess(wordLength); // update on guess submission
     const [paddedGuesses, setPaddedGuesses] = useState([])
     const [remainingGuesses, setRemainingGuesses] = useState(numGuesses); // update on guess submission
 
@@ -22,27 +26,44 @@ export default function App() {
             setPaddedGuesses([...guesses, guess].concat(Array(remainingGuesses - 1).fill("")));
         }
 
-    }, [guess]);  
-    
-    const onEnterGuessHandler = (event) => {
-        // if enter was pressed
-        if (event.key === "Enter") {
-            if (guess.length === wordLength)
-            setGuesses(prevGuesses => [...prevGuesses, guess]);
-        }
-        
-    };
+    }, [guess, guesses]);
 
-    const onGuessChangeHandler = (event) => {
-        if (event.target.value.length <= wordLength)
-            setGuess(event.target.value);
+    useEffect(() => {
+        // if every board has been solved, end the game
+        if (boards.every(solved => solved))
+            setGameOver(true);
+
+    }, [boards]);
+
+    useEffect(() => {
+        if (gameOver)
+            alert("You Won!");
+
+    }, [gameOver]);
+
+    const onSolve = (word) => {
+        const index = words.indexOf(word);
+
+        setBoards(prevBoards => {
+            const temp = [...prevBoards];
+            temp[index] = true;
+            return temp;
+        });
     };
 
     return (
         <>
-            <input type = "text" onChange = {onGuessChangeHandler} onKeyPress = {onEnterGuessHandler}/>
             <main className = "boards">
-                {words.map(word => <Board key = {word} word = {word} guesses = {paddedGuesses} wordLength = {wordLength} numGuesses = {numGuesses} />)}
+                {words.map(word =>  <Board
+                                        key = {word}
+                                        onSolve = {onSolve}
+                                        word = {word}
+                                        display = {paddedGuesses}
+                                        guesses = {guesses}
+                                        wordLength = {wordLength}
+                                        numGuesses = {numGuesses}
+                                    />
+                )}
             </main>
         </>
         

@@ -1,9 +1,6 @@
 .wordrow {
     border-radius: 0.35rem;
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-    
-    height: 4rem;
-    width: 20rem;
+    column-gap: 0.5rem;
 }

@@ -18,8 +18,10 @@
 
 .present {
     background: #ffcc00;
+    color: #000000;
 }
 
 .match {
     background: #01c282;
+    color: #000000;
 }
