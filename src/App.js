@@ -17,7 +17,7 @@ export default function App() {
     const [gameState, setGameState] = useState("playing");
 
     const [numGuesses, setNumGuesses] = useState(words.length + 5);
-    const [guess, guesses, remainingGuesses] = useGuess(wordLength, numGuesses); // update on guess submission
+    const [guess, guesses, remainingGuesses, addLetter] = useGuess(wordLength, numGuesses); // update on guess submission
     const [paddedGuesses, setPaddedGuesses] = useState([])
 
     useEffect(() => {
@@ -81,7 +81,7 @@ export default function App() {
                                     />
                 )}
             </section>
-            <Keyboard />
+            <Keyboard addLetter = {addLetter}/>
         </main>
         
     );
