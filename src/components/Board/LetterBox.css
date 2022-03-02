@@ -1,0 +1,11 @@
+.letterbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: #4b5563;
+    border-radius: 0.25rem;
+
+    height: 1.5rem;
+    width: 1.5rem;
+}

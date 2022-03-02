@@ -1,6 +1,6 @@
-import dictionary from "./dictionary.json";
+import five from "./dictionaries/five.json";
 
-export default function getRandomWord() {
-    const index = Math.floor(Math.random() * dictionary.length);
-    return dictionary[index];
+export default function getRandomFiveWord() {
+    const index = Math.floor(Math.random() * five.length);
+    return five[index];
 }

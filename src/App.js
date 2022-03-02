@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Board from "./components/Board/Board";
+import "./App.css";
 
 /*
     props
@@ -7,12 +8,12 @@ import Board from "./components/Board/Board";
 */
 export default function App() {
     // const rows = props.words + 5;
-    [length, setLength] = useState(5);
-    [height, setHeight] = useState(6);
-    [words, setWords] = useState(["tests", "happy", "twist"]);
+    const [length, setLength] = useState(5);
+    const [height, setHeight] = useState(6);
+    const [words, setWords] = useState(["tests", "happy", "twist"]);
 
     return (
-        <div>
+        <div className = "boards">
             {words.map(word => <Board key = {word} word = {word} length = {length} height = {height} />)}
         </div>
     );

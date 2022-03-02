@@ -1,8 +1,11 @@
 .board {
     background: gray;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     border: 2px black solid;
-    
-    height: 20rem;
-    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    margin: auto;
+    padding: 0.5rem;
 }
