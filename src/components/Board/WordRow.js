@@ -1,27 +1,20 @@
+import Validator from "../../utility/validator";
 import "./WordRow.css";
 import LetterBox from "./LetterBox";
 
 /*
     props
-    - word       str | word currently assigned to this WordRow
-    - size       int | number of characters in this word
+    - word           str | word to solve
+    - guess          str | word currently assigned to this WordRow
+    - size           int | number of characters in this word
 */
 export default function WordRow(props) {
-    let letters;
-    if (props.word != "")
-        letters = props.word.split("");
-    else
-        letters = Array(props.size).fill("H");
-
-
-    let keyCount = 0;
+    const letters = props.guess.split("");
+    const guessStates = Validator(props.guess, props.word);
     
     return (
         <div className = "wordrow">
-            {letters.map(char => {
-                keyCount++;
-                return <LetterBox key = {keyCount} letter = {char}/>;
-            })}
+            {letters.map((char, index) => <LetterBox key = {index} letter = {char} state = {guessStates[index]}/>)}
         </div>
     );
 }

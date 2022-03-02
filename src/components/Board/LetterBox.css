@@ -5,7 +5,21 @@
     color: white;
     background: #4b5563;
     border-radius: 0.25rem;
+    font-size: 1.5rem;
+    font-weight: bold;
 
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 3rem;
+    width: 3rem;
+}
+
+.miss {
+    background: #374151;
+}
+
+.present {
+    background: #ffcc00;
+}
+
+.match {
+    background: #00cc88;
 }

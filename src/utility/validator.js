@@ -1,8 +1,8 @@
-// enum
+// enum : these values match up to the classnames of their respective styles
 const LetterState = {
-    MISS: "MISS",
-    PRESENT: "PRESENT",
-    MATCH: "MATCH"
+    MISS: "miss",
+    PRESENT: "present",
+    MATCH: "match"
 };
 
 
@@ -14,7 +14,7 @@ const LetterState = {
     returns
     - result      [] | array of LetterState values corresponding to each letter in the correct word
 */
-function validate(guess, answer) {
+export default function validate(guess, answer) {
     const guessLetters = guess.split("");
     const answerLetters = answer.split("");
 
@@ -28,4 +28,6 @@ function validate(guess, answer) {
         else
             result.push(LetterState.MISS);
     });
+
+    return result;
 }

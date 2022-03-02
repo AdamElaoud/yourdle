@@ -11,7 +11,7 @@ export default function Board(props) {
     let wordRows = [];
 
     for (let i = 0; i < props.height; i++) {
-        wordRows.push(<WordRow key = {i} size = {props.length} word = ""/>);
+        wordRows.push(<WordRow key = {i} size = {props.length} guess = {"".padStart(props.length, " ")} word = {props.word}/>);
     }
 
     return (
