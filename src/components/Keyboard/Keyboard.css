@@ -1,0 +1,19 @@
+.keyboard {
+    position: absolute;
+    bottom: 0;
+    background: #164e63;
+    border-radius: 0.35rem;
+    font-size: clamp(0.5rem, 2.5vmin, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.25em;
+    padding: 0.5em;
+}
+
+.keyRow {
+    display: grid;
+    grid-template-columns: repeat(20, minmax(auto, 1em));
+    grid-auto-rows: 2em;
+    column-gap: 0.25em;
+}

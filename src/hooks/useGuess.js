@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 
 const LETTERS = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
-export default function useGuess(wordLength) {
+export default function useGuess(wordLength, numGuesses) {
     const [guess, setGuess] = useState("");
     const [guesses, setGuesses] = useState([]);
     const [guessAdded, setGuessAdded] = useState(null);
+    const [remainingGuesses, setRemainingGuesses] = useState(numGuesses);
 
     const onKeyDown = (event) => {
         setGuess(prevGuess => {
@@ -47,6 +48,7 @@ export default function useGuess(wordLength) {
             console.log(guess);
             setGuesses(prevGuesses => [...prevGuesses, guessAdded]);
             setGuessAdded(null);
+            setRemainingGuesses((prevRemainingGuesses => prevRemainingGuesses - 1));
         }
     }, [guess]);
 
@@ -58,5 +60,5 @@ export default function useGuess(wordLength) {
         }
     }, []);
 
-    return [guess, guesses];
+    return [guess, guesses, remainingGuesses];
 }

@@ -1,0 +1,23 @@
+.key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.35rem;
+    background: #6b7280;
+    color: #FFFFFF;
+    padding: 1em;
+    grid-column: span 2;
+}
+
+.key:hover {
+    cursor: pointer;
+}
+
+.blank {
+    background: none;
+    grid-column: span 1;
+}
+
+.wide {
+    grid-column: span 3;
+}

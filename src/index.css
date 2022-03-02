@@ -1,8 +1,10 @@
 body {
     margin: 0;
+    height: 100vh;
+    background: #1f2937;
 }
 
-* {
+*, *::after, *::before {
     box-sizing: border-box;
     font-family: "Nunito", sans-serif;
 }
