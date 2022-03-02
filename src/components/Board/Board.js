@@ -4,14 +4,15 @@ import "./Board.css";
 /*
     props
     - word           str | word to solve
-    - length         int | length of word to guess
-    - height         int | number of WordRows in board
+    - guesses         [] | array of submitted guesses
+    - wordLength     int | length of word to guess
+    - numGuesses     int | number of WordRows in board
 */
 export default function Board(props) {
     let wordRows = [];
 
-    for (let i = 0; i < props.height; i++) {
-        wordRows.push(<WordRow key = {i} size = {props.length} guess = {"".padStart(props.length, " ")} word = {props.word}/>);
+    for (let i = 0; i < props.numGuesses; i++) {
+        wordRows.push(<WordRow key = {i} wordLength = {props.wordLength} guess = {props.guesses[i]} word = {props.word}/>);
     }
 
     return (
