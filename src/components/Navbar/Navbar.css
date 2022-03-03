@@ -4,6 +4,8 @@
     background: #111827;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex: 1;
 }
 
 .navbar {
@@ -11,7 +13,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3rem;
     font-size: 1.5rem;
     width: 30%;
 }

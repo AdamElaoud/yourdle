@@ -1,0 +1,10 @@
+.welcome-button {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: #374151;
+    text-decoration: none;
+}
+
+.welcome-button:hover {
+    cursor: pointer;
+}
