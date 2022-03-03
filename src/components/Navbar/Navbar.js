@@ -11,17 +11,17 @@ export default function Navbar(props) {
             <div className = "navbar">
                 <div className = "nav-title">Yourdle</div>
 
-                <div className = "nav-buttons">
-                    {
-                        props.games && (
-                            <>
-                                <NavButton display = "Daily" link = "/daily"/>
-                                <NavButton display = "Infinite" link = "/infinite"/>
-                                <NavButton display = "Create" link = "/create"/>
-                            </>
-                        )
-                    }
+                {
+                    props.games && (
+                        <div className = "nav-gamemodes">
+                            <NavButton display = "Daily" link = "/daily"/>
+                            <NavButton display = "Infinite" link = "/infinite"/>
+                            <NavButton display = "Create" link = "/create"/>
+                        </div>       
+                    )
+                }
 
+                <div className = "nav-buttons">
                     <NavButton display = "help" link = "/help"/>
                     <NavButton display = "profile" link = "/profile"/>
                     <NavButton display = "settings" link = "/settings"/>

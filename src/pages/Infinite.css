@@ -1,0 +1,26 @@
+.sliders {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 35%;
+    margin: auto;
+    flex: 1;
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    width: 50%;
+}
+
+.slider-title {
+    flex: 8
+}
+
+.slider-value {
+    flex: 1
+}

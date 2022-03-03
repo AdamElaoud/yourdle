@@ -9,16 +9,21 @@ import "./Game.css";
     - words          [] | words for game
 */
 export default function Game(props) {
-    const [words, setWords] = useState(props.words); // built, happy, twist
-    const [wordLength, setWordLength] = useState(words[0].length);
+    const wordLength = props.words[0].length;
+    const numGuesses = props.words.length + 5;
 
-    const [boards, setBoards] = useState(Array(words.length).fill(false));
+    const [boards, setBoards] = useState(Array(props.words.length).fill(false));
+
     const [gameOver, setGameOver] = useState(false);
     const [gameState, setGameState] = useState("playing");
 
-    const [numGuesses, setNumGuesses] = useState(words.length + 5);
     const [guess, guesses, remainingGuesses, addLetter] = useGuess(wordLength, numGuesses); // update on guess submission
     const [paddedGuesses, setPaddedGuesses] = useState([])
+
+    useEffect(() => {
+        console.log(`Game: ${props.words}`);
+
+    }, [props.words]);
 
     useEffect(() => {
         // if there are remaining available guesses, pad the board
@@ -58,7 +63,7 @@ export default function Game(props) {
     }, [gameOver]);
 
     const onSolve = (word) => {
-        const index = words.indexOf(word);
+        const index = props.words.indexOf(word);
 
         setBoards(prevBoards => {
             const temp = [...prevBoards];
@@ -70,7 +75,7 @@ export default function Game(props) {
     return (
         <main className = "yourdle">
             <section className = "boards">
-                {words.map(word =>  <Board
+                {props.words.map(word =>  <Board
                                         key = {word}
                                         onSolve = {onSolve}
                                         word = {word}

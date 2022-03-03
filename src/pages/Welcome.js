@@ -4,8 +4,9 @@ import "./Welcome.css";
 
 export default function Welcome() {
     return (
-        <div className = "container">
+        <div className = "full-vert-container">
             <Navbar games = {false}/>
+
             <main className = "welcome">
                 <div className = "title">
                     Yourdle
