@@ -1,0 +1,11 @@
+.yourdle {
+    display: flex;
+    justify-content: center;
+}
+
+.boards {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}

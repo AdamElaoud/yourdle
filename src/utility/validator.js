@@ -1,5 +1,5 @@
 // enum : these values match up to the classnames of their respective styles
-const LetterState = {
+export const LetterState = {
     MISS: "miss",
     PRESENT: "present",
     MATCH: "match"
