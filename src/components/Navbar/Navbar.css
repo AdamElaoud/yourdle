@@ -1,9 +1,29 @@
-.navbar {
+.navbar-background {
     position: sticky;
     top: 0;
     background: #111827;
     display: flex;
     justify-content: center;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: center;
     align-items: center;
     height: 3rem;
+    font-size: 1.5rem;
+    width: 30%;
+}
+
+.nav-title {
+    position: absolute;
+    left: 0;
+}
+
+.nav-buttons {
+    display: flex;
+    position: absolute;
+    right: 0;
+    column-gap: 1rem;
 }
