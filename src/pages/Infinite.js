@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useDictionary from "../hooks/useDictionary";
+import useGameSetup from "../hooks/useGameSetup";
 import Slider from '@mui/material/Slider';
 import Game from "../components/Game/Game";
 import Navbar from "../components/Navbar/Navbar";
@@ -9,10 +9,11 @@ export default function Infinite() {
     const [boardCount, setBoardCount] = useState(1);
     const [wordLength, setWordLength] = useState(5);
 
+    useGameSetup(boardCount, wordLength);
+
     console.log(`Boards: ${boardCount} Length: ${wordLength}`);
 
-    const [started, setStarted] = useState(false);
-    const words = useDictionary(boardCount, wordLength);
+    // const [started, setStarted] = useState(false);
 
     const onBoardCountChange = (event) => {
         setBoardCount(event.target.value);
@@ -58,7 +59,7 @@ export default function Infinite() {
                 </div>
             </div>
 
-            <Game words = {words}/>
+            <Game/>
         </div>
     );
 }

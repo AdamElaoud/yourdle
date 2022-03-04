@@ -1,5 +1,7 @@
 
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { gameActions } from "../../store/gameSlice";
 import WordRow from "./WordRow";
 import "./Board.css";
 
@@ -13,6 +15,7 @@ import "./Board.css";
     - numGuesses     int | number of WordRows in board
 */
 export default function Board(props) {
+    const dispatch = useDispatch();
     const [solved, setSolved] = useState(false);
     
     let solutionFound = false;
@@ -43,8 +46,8 @@ export default function Board(props) {
 
     // extracted to useEffect to prevent update/rerender conflict between App.js and Board.js
     useEffect(() => {
-      if (solved)
-        props.onSolve(props.word);
+        if (solved)
+            dispatch(gameActions.boardSolved(props.word))
     
     }, [solved])
     

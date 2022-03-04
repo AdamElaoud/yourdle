@@ -1,29 +1,35 @@
 import { useState, useEffect } from "react";
-import useGuess from "../../hooks/useGuess";
+import { useSelector, useDispatch } from "react-redux";
+import { gameActions } from "../../store/gameSlice";
+import { stateActions } from "../../store/stateSlice";
+import useInput from "../../hooks/useInput";
 import Board from "../Board/Board";
 import Keyboard from "../Keyboard/Keyboard";
 import "./Game.css";
 
-/*
-    props
-    - words          [] | words for game
-*/
-export default function Game(props) {
-    const wordLength = props.words[0].length;
-    const numGuesses = props.words.length + 5;
+export default function Game() {
+    const dispatch = useDispatch();
 
-    const [boards, setBoards] = useState(Array(props.words.length).fill(false));
+    const words = useSelector(state => state.gameData.words);
+    const wordLength = useSelector(state => state.gameData.wordLength);
 
-    const [gameOver, setGameOver] = useState(false);
-    const [gameState, setGameState] = useState("playing");
+    const gameOver = useSelector(state => state.gameState.gameOver);
+    const gameState = useSelector(state => state.gameState.status);
 
-    const [guess, guesses, remainingGuesses, addLetter] = useGuess(wordLength, numGuesses); // update on guess submission
-    const [paddedGuesses, setPaddedGuesses] = useState([])
+    const boards = useSelector(state => state.gameData.boards);
+    const guess = useSelector(state => state.gameData.currentGuess);
+    const guesses = useSelector(state => state.gameData.guesses);
+    const remainingGuesses = useSelector(state => state.gameData.remainingGuesses);
+    const numGuesses = useSelector(state => state.gameData.maxGuesses);
+    
+    const addLetter = useInput();
+
+    const [paddedGuesses, setPaddedGuesses] = useState([]);
 
     useEffect(() => {
-        console.log(`Game: ${props.words}`);
+        console.log(`Game: ${words}`);
 
-    }, [props.words]);
+    }, [words]);
 
     useEffect(() => {
         // if there are remaining available guesses, pad the board
@@ -41,15 +47,14 @@ export default function Game(props) {
     useEffect(() => {
         // if every board has been solved, end the game
         if (boards.every(solved => solved)) {
-            setGameOver(true);
-            setGameState("won");
+            dispatch(stateActions.setGameOver(true));
+            dispatch(stateActions.setStatus("won"));
         }
 
         if (remainingGuesses === 0 && !boards.every(solved => solved)) {
-            setGameOver(true);
-            setGameState("lost");
+            dispatch(stateActions.setGameOver(true));
+            dispatch(stateActions.setStatus("lost"));
         }
-            
 
     }, [boards]);
 
@@ -62,22 +67,11 @@ export default function Game(props) {
 
     }, [gameOver]);
 
-    const onSolve = (word) => {
-        const index = props.words.indexOf(word);
-
-        setBoards(prevBoards => {
-            const temp = [...prevBoards];
-            temp[index] = true;
-            return temp;
-        });
-    };
-
     return (
         <main className = "yourdle">
             <section className = "boards">
-                {props.words.map(word =>  <Board
+                {words.map(word =>  <Board
                                         key = {word}
-                                        onSolve = {onSolve}
                                         word = {word}
                                         display = {paddedGuesses}
                                         guesses = {guesses}
