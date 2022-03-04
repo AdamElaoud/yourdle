@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/yourdle/static/css/main.a8fae826.css",
-    "main.js": "/yourdle/static/js/main.5592042e.js",
-    "index.html": "/yourdle/index.html",
-    "main.a8fae826.css.map": "/yourdle/static/css/main.a8fae826.css.map",
-    "main.5592042e.js.map": "/yourdle/static/js/main.5592042e.js.map"
+    "main.css": "/static/css/main.a8fae826.css",
+    "main.js": "/static/js/main.5592042e.js",
+    "index.html": "/index.html",
+    "main.a8fae826.css.map": "/static/css/main.a8fae826.css.map",
+    "main.5592042e.js.map": "/static/js/main.5592042e.js.map"
   },
   "entrypoints": [
     "static/css/main.a8fae826.css",
